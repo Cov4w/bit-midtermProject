@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "새 프로필",
+    "Projects": [
+      {
+        "Path": "BookShopping.Server\\BookShopping.Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BookShopping.Client\\BookShopping.Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

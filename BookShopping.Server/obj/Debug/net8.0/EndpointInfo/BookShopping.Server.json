@@ -1,0 +1,676 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "BookShopping.Server",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/admin/customers": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/{cusid}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "cusid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/payment/{payid}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "payid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/customers/{id}": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/books/{isbn}/sale-status": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleStatusDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleStatusDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/aiapi/booksummary/{isbn}": {
+      "get": {
+        "tags": [
+          "AI"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/aiapi/cussummarry/{cusID}": {
+      "get": {
+        "tags": [
+          "AI"
+        ],
+        "parameters": [
+          {
+            "name": "cusID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/aiapi/aichat": {
+      "post": {
+        "tags": [
+          "AI"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiChatRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiChatRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiChatRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/book/sync": {
+      "post": {
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "searchPage",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/book/search": {
+      "post": {
+        "tags": [
+          "Book"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookSearchFilterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookSearchFilterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookSearchFilterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/{id}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/checkout": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartPaymentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartPaymentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartPaymentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/booklist": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AiChatRequestDto": {
+        "type": "object",
+        "properties": {
+          "cusId": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Book": {
+        "required": [
+          "bookName",
+          "bookPrice",
+          "category"
+        ],
+        "type": "object",
+        "properties": {
+          "isbn": {
+            "maxLength": 20,
+            "type": "string",
+            "nullable": true
+          },
+          "bookName": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "category": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "bookPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bookCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isForSale": {
+            "type": "boolean"
+          },
+          "bookURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "thumbnail": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookCategoryEntity": {
+            "$ref": "#/components/schemas/BookCategory"
+          },
+          "paymentItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BookCategory": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Book"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BookSearchFilterDto": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "minPrice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "maxPrice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CartItemDto": {
+        "required": [
+          "bookName"
+        ],
+        "type": "object",
+        "properties": {
+          "bookName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "count": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CartPaymentRequestDto": {
+        "required": [
+          "cusId",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "cusId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CartItemDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Customer": {
+        "required": [
+          "cusName",
+          "cusPw"
+        ],
+        "type": "object",
+        "properties": {
+          "cusId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "cusPw": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cusName": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cusMoney": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentHistories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentHistory"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDto": {
+        "required": [
+          "id",
+          "pw"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "pw": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentHistory": {
+        "required": [
+          "cusId"
+        ],
+        "type": "object",
+        "properties": {
+          "payId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cusId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "payMoney": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "paymentItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentItem": {
+        "type": "object",
+        "properties": {
+          "payItemID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "payID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isbn": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bookUnitPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentHistory": {
+            "$ref": "#/components/schemas/PaymentHistory"
+          },
+          "book": {
+            "$ref": "#/components/schemas/Book"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSaleStatusDto": {
+        "type": "object",
+        "properties": {
+          "isForSale": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
